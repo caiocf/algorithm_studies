@@ -1,28 +1,29 @@
 Tipos de Objetos Substitutos em Testes
 
 Esses termos são usados em testes de software, especificamente no contexto de testes unitários. Eles se referem a diferentes tipos de objetos substitutos usados para isolar componentes sob teste de suas dependências:
-1. Dummy
 
-   Descrição: Um objeto que é passado ao redor, mas nunca realmente usado. Geralmente é utilizado para preencher listas de parâmetros.
-   Propósito: É usado para permitir que o teste seja executado, mas o próprio objeto dummy não tem funcionalidade.
-   Exemplo: Uma interface que um método requer como parâmetro, mas que nunca é chamado no cenário específico que está sendo testado.
+### 1. Dummy
+- **Descrição:** Um objeto que é passado mas nunca realmente usado. Geralmente é utilizado para preencher listas de parâmetros.
+- **Propósito:** Garantir que o código pode ser executado sem erros quando um argumento é necessário, mas o valor real não é relevante para o teste.
+- **Exemplo:** Se uma função requer um parâmetro do tipo `User`, mas o teste não se preocupa com os detalhes desse usuário, um objeto `User` dummy pode ser passado.
 
-2. Fake
+### 2. Fake
+- **Descrição:** Uma implementação que tem um comportamento funcional, mas não é a implementação real usada em produção. Por exemplo, uma base de dados em memória em vez de uma base de dados real.
+- **Propósito:** Simular componentes reais de maneira mais leve e controlada para facilitar os testes.
+- **Exemplo:** Se você tem um repositório que normalmente acessa um banco de dados, um repositório fake pode ser criado que apenas usa uma lista em memória.
 
-   Descrição: Um objeto que tem uma implementação, mas é simplificado e não adequado para produção.
-   Propósito: Permite que o teste seja executado em um ambiente isolado.
-   Exemplo: Uma implementação de repositório de dados que armazena dados em uma lista em vez de uma base de dados real.
+### 3. Mock
+- **Descrição:** Um objeto que verifica se certas chamadas ou interações são feitas nele durante o teste.
+- **Propósito:** Garantir que certas ações ocorram durante o teste. É usado para verificar comportamentos.
+- **Exemplo:** Se você quer garantir que uma função `enviarEmail` foi chamada durante um teste, você pode criar um mock dessa função e verificar se ela foi chamada.
 
-3. Mock
+### 4. Spy
+- **Descrição:** Um objeto que registra algumas ou todas as interações que são feitas nele.
+- **Propósito:** Observar o comportamento de um objeto, como quais métodos foram chamados e com quais argumentos, sem alterar seu comportamento.
+- **Exemplo:** Se você quer saber quantas vezes uma função foi chamada, mas não quer alterar seu comportamento, você pode usar um spy.
 
-   Descrição: Um objeto que verifica as interações durante o teste, como verificar se um método foi chamado.
-   Propósito: Verificar comportamentos.
-   Exemplo: Usando uma biblioteca de mock como Mockito em Java, verificar se um método específico foi chamado.
+### 5. Stub
+- **Descrição:** Um objeto que substitui um método específico de um objeto para retornar um valor ou comportamento específico.
+- **Propósito:** Controlar o comportamento de um objeto para facilitar o teste.
+- **Exemplo:** Se você tem uma função que faz uma chamada HTTP e você não quer fazer essa chamada durante o teste, você pode substituir essa função por um stub que retorna um valor fixo.
 
-4. Spy
-
-   Descrição: Um objeto que atua como a implementação real, mas também permite a verificação de interações.
-   Propósito: Envolver um objeto real e verificar se certos métodos foram chamados sem afetar o comportamento desse objeto.
-   Exemplo: Usando Mockito, criar um spy de uma lista real e verificar se o método add foi chamado.
-
-Nota: As diferenças entre Mocks e Spies podem ser sutis e podem variar entre diferentes bibliotecas e linguagens de programação. A distinção principal é que um Mock é uma imitação completa de uma classe ou interface, enquanto um Spy é um envoltório em torno de uma instância rea
