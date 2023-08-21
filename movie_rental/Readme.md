@@ -1,5 +1,3 @@
-Com base nos arquivos inspecionados, aqui está um resumo das lógicas de negócio do projeto `movie_rental`:
-
 ### 1. **VideoRegistry**:
 - Mantém um registro de filmes disponíveis para aluguel.
 - Os filmes são categorizados em dois tipos: REGULAR e CHILDRENS.
